@@ -19,6 +19,19 @@ import sys
 import pandas as pd
 import numpy as np
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+import youtube_dl
+MainPath=r'C:\Users\manor\Desktop\Mainproject'
+DataPath=MainPath+'\\Output\\'
+AudioPath=MainPath+'\\Trending\\'
+ffmpegexec=r'C:\Users\manor\Desktop\ffmpeg\bin\ffmpeg.exe'
+
+import os
+import subprocess
+
 ##Start time of script
 nowDTG = datetime.now().replace(microsecond=0)
 print('Script started at: ' + str(nowDTG))
@@ -30,9 +43,6 @@ def write_data_to_file(fname,data):
     f.close()
     print("File Write done!")
     return
- 
-#Make alist of known folks whose audio we want to download
-#Persons = ['Ray Dalio interview', 'Kenneth Arrow' , 'James P. Gorman interview', 'Jamie Dimon interview' ]
     
 ### Driver
 webDriverLocation = r'C:\Users\manor\Desktop\Chromedriver\chromedriver.exe'
@@ -69,19 +79,6 @@ else:
         print('You need to specify a webdriver to use')
         sys.exit()
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-import youtube_dl
-MainPath=r'C:\Users\manor\Desktop\Mainproject'
-DataPath=MainPath+'\\Output\\'
-AudioPath=MainPath+'\\Trending\\'
-ffmpegexec=r'C:\Users\manor\Desktop\ffmpeg\bin\ffmpeg.exe'
-
-import os
-import subprocess
-
 baseUrl=('https://www.youtube.com/feed/trending')
 driver.get(baseUrl)
 wait = WebDriverWait(driver, 10)
@@ -107,7 +104,7 @@ thumbnail_list = []
 like_count_list = []
 upload_date_list = []
 #Loop through the links
-counter=101
+counter=151
 for link in youtubelinks:
     print(link)
     
@@ -215,7 +212,7 @@ del title_list
 #Put this data into Excel
 from pandas import ExcelWriter
 
-writer = ExcelWriter(DataPath+'YT_Trending3.xlsx')
+writer = ExcelWriter(DataPath+'YT_Trending4.xlsx')
 finaldf.to_excel(writer,'Sheet1')
 writer.save()
 
@@ -229,7 +226,7 @@ import speech_recognition as sr
 from autocorrect import spell
 import pandas as pd
 #Filelist for trending videos and loop for converting to text
-for ctr in range(59,101):
+for ctr in range(85,101):
     testwav=AudioPath+'\\'+'Trending'+str(ctr)+'.wav'
     testtext=AudioPath+'\\'+'Trending'+str(ctr)+'.txt'
     print('convert to text using pocketsphinx -' + testwav)
@@ -255,98 +252,3 @@ for ctr in range(59,101):
         Newtextdata = ''
     #audiotext_list.append(textdata)
     write_data_to_file(testtext,Newtextdata)
-
-
-for ctr in range(59,101):
-    print(ctr)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-filedf['NewText'] = NewCorrTextMerged
-
-
-for i in filedf['Text'].to_string(index=False):
-    print(i)
-    
-    
-#wordtovec and tesnorflow training to fix language
-#import nltk
-#nltk.download('stopwords')
-
-#type(filedf['Text'])
-#see column names and data types of columns in panda df
-filedf.apply(lambda x: pd.api.types.infer_dtype(x.values))
-
-from sklearn.feature_extraction.text import CountVectorizer
-from nltk.corpus import stopwords
-
-vector_u = CountVectorizer(ngram_range = (1,1), analyzer = 'word', stop_words=stopwords.words('english'))
-unigrams = vector_u.fit(filedf['NewText'] ).get_feature_names()
-
-vector_b = CountVectorizer(ngram_range = (2,2), analyzer = 'word', stop_words=stopwords.words('english'))
-bigrams = vector_b.fit(filedf['NewText'] ).get_feature_names()
-
-vector_t = CountVectorizer(ngram_range = (3,3), analyzer = 'word', stop_words=stopwords.words('english'))
-trigrams = vector_t.fit(filedf['NewText'] ).get_feature_names()
-
-vector_q = CountVectorizer(ngram_range = (4,4), analyzer = 'word', stop_words=stopwords.words('english'))
-quadgrams = vector_q.fit(filedf['NewText'] ).get_feature_names()
-
-vector_p = CountVectorizer(ngram_range = (5,5), analyzer = 'word', stop_words=stopwords.words('english'))
-pentagrams = vector_p.fit(filedf['NewText'] ).get_feature_names()
-
-#Pos tagger chunk labelling
-import nltk
-stopw = vector_u.get_stop_words()
-
-def ie_preprocess(document):
-    document = ' '.join([i for i in document.split() if i not in stopwords.words('english')])
-    sentences = nltk.sent_tokenize(document)
-    sentences = [nltk.word_tokenize(sent) for sent in sentences]
-    sentences = [nltk.pos_tag(sent) for sent in sentences]
-    return sentences
-
-def extract_names(document):
-    names = []
-    otherText = []
-    sentences = ie_preprocess(document)
-    for tagged_sentence in sentences:
-        for chunk in nltk.ne_chunk(tagged_sentence):
-            if type(chunk) == nltk.tree.Tree:
-                if chunk.label() == 'PERSON':
-                    names.append(' '.join([c[0] for c in chunk]))
-        for chunk in nltk.ne_chunk(tagged_sentence):
-            if type(chunk) == nltk.tree.Tree:
-                if chunk.label() != 'PERSON':
-                    otherText.append(' '.join([c[0] for c in chunk]))
-    return names, otherText
-
-ie_preprocess(filedf['Text'])
-
-
-#Get labelled data of these bigrams
-
-
-#Topic Modelling
-#Latent Dirichlet allocation (LDA) 
-ap_lda <- LDA(AssociatedPress, k = 2, control = list(seed = 1234))
-ap_lda
-
