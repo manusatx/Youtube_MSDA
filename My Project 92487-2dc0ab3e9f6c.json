@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ageless-venture-222823",
+  "private_key_id": "2dc0ab3e9f6c53b25f1692053db8c7e6c4673c27",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdYTdb/v+FbDFk\nsvMf0QQyBoMio06CD04cALZ49LV6Bx7tngHPPDa8IWgBpn0B2xauFXyQ6QsUs28t\n5IFKqJJhJZkF/tmtDOzumjJWS7u7AHLGWnGXlnL+ij/m08jY2MdLaHjVe6DklJmv\nHb6KvXq576Q1yXu9ICo/QuKNiWFqiWymDY5TMGN7jnf/0JOrZhJjc3L80iQcmMdx\nOmAteGVqIeU3W30kxGKZUnqVdAoCd3mlTtHu0s5gkrPPnT292ddymEB6IXMXWcBt\nbdmEmUDb/feBQyiAmgIxKDUVdJCQm1ZNLDw1qvA4hHA4zHQK1AoSOz1KwnYqzhOR\nawaYxPDtAgMBAAECggEABj6EdAe4yyopBooMF+vS2wpDmzT4CTSCwJ0toDxzU9li\n+oINp9OHh2za48/ff1qaOoN7OwOoDyT0aRF7KMNp9WVIvkJnkBRmdSwUibR9CRUi\nOKj/f0h2nQ9OrEGkYygsthr5ylyanF8h/t7y/623aBewP/sTyAP18Scd9ogoH5Iu\n0tlJ5pF4cJEdc6YEiMOosnPFHq3qJpuzZEd0bT1+B5YYDosnqJNhvzlX5NYQRJUH\nyJ1SQZzU5gjbzFd7xgdylV2TL9O/7qtju80iTRsC5aOvEd3RJWXgaMHVQuwgEkGA\nNrfMRWz6bnhBNqJU/Gk8Kfn22mWaFMMulPx3C8bFYQKBgQDVCk4mlmtNIklQMeyE\nu3obdK/UaXS4utRMfmWHEiZceFaeLLWTYwz/sGFdav+2MS+zpFc9v49CdM+7xKTn\nmp+HBALxDguPcuC729pkFIZTgCwvrKrCwISZ46zQ0Npq2sctJJfM/NkzvkN4y3pO\neQromx0pswAypn+A0wmWT4+NIQKBgQC9HZH+h+OhmwGQ+W8tgN+WiYJplrvHIxFx\n93+XyggYcWZ/ap42xdKgNeXaqxxf9kTbkztgNVv2KfU+ws0z/4RjZwLudODrzB4C\nKZMOCh7jjD/6Im7M25L6OFcV7JjeOJ1/jaPE+e7eFFZpOVVu3iNayvYfLLJXXkdN\nltKnw7m+TQKBgDQTdM8R7eDJBMrJqVs4yLx1ZZWywYl2gfbA3uiJkz7/W40GuMvy\nZncKEoLXaPKMS3DKN1ksvkQscasggn7q2RwT6vQpzsGd/zlsoJHeQoeeyS5OMt+w\nV7mWYeQZaYq9N/rc+w5ssFtpouygMKGGDRiW8iYDT4USFhDThYBsqlaBAoGBAJWM\nObQO34ofGoj7Rtiz7ZuMWA2JfiqGZ7g44LQ2tlol6sjdlgl4PAwnMwHNiB22kFMW\nxcBZ0cQDAAXGZCE3cQhuIFpTIL42ZpCNMdXLWQvWD42NBxOGm161iOA0fdpU6O9C\nIXyVrDf/2ylQhmeq0Ehu8VxLqyf9zOLlXuX9l/eNAoGAfaHxx1YbFdXLC8myCmZv\n5tZlGAveMDDBkeKPqby0ZuufMXyMKZ+KWbfvreM4ihfwGkrb6fJqiXqSIRxGW9uM\niGnb1VgjqdUDbER+olUgApB1jKVTxCXp7SHStf/EqRRkoNDFbdWdHHDt9cM2oS9S\nCRrv9oM4+3zEn+YyyKTxIaM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "manuutsa@ageless-venture-222823.iam.gserviceaccount.com",
+  "client_id": "110301158723620484813",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/manuutsa%40ageless-venture-222823.iam.gserviceaccount.com"
+}
